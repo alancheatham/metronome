@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import mousetrap from 'mousetrap'
+
 export default {
   name: 'app',
   data () {
@@ -46,6 +48,12 @@ export default {
     playClick () {
       this.$refs.click.play()
     }
+  },
+  mounted () {
+    mousetrap.bind('space', this.toggleClick)
+  },
+  destroyed () {
+    mousetrap.unbind('space')
   }
 }
 </script>
@@ -69,8 +77,8 @@ export default {
   width 300px
 
 .play-button
-  width 60px
-  height 60px
+  width 50px
+  height 50px
   border-radius 50%
   border 5px black solid
   display flex
